@@ -1,0 +1,314 @@
+[colors]
+foreground = #93a1a1
+background = #073642
+foreground-alt = ${colors.foreground}
+background-alt = ${colors.background}
+alert = #b71c1c
+
+color1 = #00838f
+color2 = #00acc1
+
+font = #073642
+
+[bar/panelbar]
+monitor = LVDS-1
+width = 100%
+height = 15
+radius = 0.0
+fixed-center = true
+
+foreground = ${colors.foreground-alt}
+background = ${colors.background-alt}
+
+font-0 = "Hack:pixelsize=8.5;2"
+font-1 = "Mononoki Nerd Font:style=solid:pixelsize=10;2"
+font-2 = "Mononoki Nerd Font:pixelsize=11;2"
+
+modules-left = profile arrow7 i3
+modules-right = arrow0 xwindow arrow1 netspdwlan wlan eth arrow2 filesystem arrow3 cpu arrow4 memory arrow5 temperature arrow6 date arrow3
+
+tray-position = right
+tray-background = ${colors.color1}
+tray-foreground = ${colors.color1}
+tray-padding = 4
+
+wm-name = i3wm
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/arrow0]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = #006064
+content-background = ${colors.background}
+
+[module/arrow1]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.color1}
+content-background = #006064
+
+[module/arrow2]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.color2}
+content-background = ${colors.color1}
+
+[module/arrow3]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.color1}
+content-background = ${colors.color2}
+
+[module/arrow4]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.color2}
+content-background = ${colors.color1}
+
+[module/arrow5]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.color1}
+content-background = ${colors.color2}
+
+[module/arrow6]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.color2}
+content-background = ${colors.color1}
+
+[module/arrow7]
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.color2}
+content-background = ${colors.background}
+
+[module/profile]
+type = custom/text
+content = "  Ophrack3rz "
+content-foreground = ${colors.font}
+content-background = ${colors.color2}
+
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+
+index-sort = true
+strip-wsnumbers = true
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-foreground = ${colors.foreground-alt}
+label-mode-background = ${colors.background-alt}
+
+;label-focused = %{F#073642 B#4527a0}%{F-} %name% %{F#4527a0 B#073642}%{F-}
+;label-focused = %{F#073642 B#00838f}%{F-} %name% %{F#00838f B#073642}%{F-}
+label-focused = %{F#073642 B#311b92}%{F-} %name% %{F#311b92 B#073642}%{F-}
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.background}
+label-focused-underline = ${colors.background}
+label-focused-padding = 0
+
+label-unfocused = " %name% "
+label-unfocused-padding = ${self.label-focused-padding}
+label-unfocused-foreground = ${colors.color2}
+label-unfocused-background = ${colors.background}
+
+label-visible = "%name%"
+label-visible-foreground = ${self.label-focused-background}
+label-visible-background = ${self.label-focused-foreground}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %{F#073642 B#b71c1c}%{F-} %name% %{F#b71c1c B#073642}%{F-}
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 0
+
+label-separator = 
+label-separator-padding = 0
+label-separator-foreground = #FFF
+
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+format-padding = 0
+
+label = " %title% "
+label-maxlen = 30
+label-foreground = ${colors.color2}
+label-background = #006064
+
+label-empty =
+label-empty-foreground = ${colors.background}
+
+[module/netspdwlan]
+type = internal/network
+interface = wlp3s0
+interval = 1.0
+format-connected = "<label-connected>"
+label-connected = "  %downspeed:3%%upspeed:3% "
+label-connected-foreground = ${colors.font}
+label-connected-background = ${colors.color1}
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 1.0
+
+format-connected ="<label-connected>"
+label-connected = " %essid:0:10:% "
+label-connected-foreground = ${colors.font}
+label-connected-background = ${colors.color1}
+content-foreground = ${colors.background}
+content-background = ${colors.color1}
+
+format-disconnected = <label-disconnected>
+label-disconnected = "  OFFLINE "
+label-disconnected-foreground = ${colors.alert}
+label-disconnected-background = ${colors.color1}
+
+
+[module/eth]
+type = internal/network
+interface = enp4s0f2
+interval = 1.0
+
+format-connected-prefix = "  "
+format-connected-prefix-font = 2
+format-connected-prefix-foreground = ${colors.font}
+format-connected-prefix-background = ${colors.color1}
+label-connected = " %local_ip% "
+
+
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /
+
+interval = 10
+
+fixed-values = true
+
+spacing = 2
+
+label-mounted = "  %percentage_used%% "
+label-mounted-foreground = ${colors.font}
+label-mounted-background = ${colors.color2}
+
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.background}
+label-font = 2
+
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+format-prefix = " "
+format-prefix-foreground = ${colors.font}
+format-prefix-background = ${colors.color1}
+format-prefix-font = 2
+
+label = "%percentage:2%% "
+label-foreground = ${colors.font}
+label-background = ${colors.color1}
+label-font = 1
+
+
+[module/memory]
+type = internal/memory
+interval = 1
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.font}
+format-prefix-background = ${colors.color2}
+format-prefix-font = 2
+
+label = "%percentage_used%% "
+label-foreground = ${colors.font}
+label-background = ${colors.color2}
+label-font = 1
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 80
+
+format = "<ramp><label>"
+format-foreground = ${colors.font}
+format-background = ${colors.color1}
+label = "%temperature-c% "
+label-foreground = ${colors.font}
+label-background = ${colors.color1}
+
+format-warn = <ramp><label-warn>
+label-warn = "%temperature-c% "
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = "  "
+ramp-1 = "  "
+ramp-2 = "  "
+ramp-3 = "  "
+ramp-4 = "  "
+ramp-foreground = ${colors.font}
+ramp-background = ${colors.color1}
+ramp-font = 2
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%D"
+date-alt = "%a, %b %d"
+
+time = "  %H:%M"
+time-alt = " %I:%M %p"
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.font}
+format-prefix-background = ${colors.color2}
+format-prefix-font = 2
+
+label = "%date%%time%  "
+label-foreground = ${colors.font}
+label-background = ${colors.color2}
+
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+pseudo-transparency = false
+
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
