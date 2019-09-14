@@ -4,17 +4,14 @@ set $mod Mod4
 # Start a Terminal
 bindsym $mod+Return exec --no-startup-id st
 bindsym $mod+Shift+Return exec --no-startup-id xterm
-bindsym $mod+Ctrl+t exec --no-startup-id urxvt
-bindsym $mod+ctrl+l exec --no-startup-id lxterminal
 
 # Start a Program Launcher
 bindsym $mod+d exec dmenu_run
 
-# Font for Window Titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below
+# Font for Window Titles
 font pango:Dejavu Sans Mono 8
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# Move floating windows to their wanted position
 floating_modifier $mod
 
 # kill focused window
@@ -51,18 +48,12 @@ bindsym $mod+b split h
 bindsym $mod+v split v
 
 # Orientation for New Workspaces
-# New workspaces get a reasonable default orientation: Wide-screen monitors
-# (anything wider than high) get horizontal orientation, rotated monitors
-# (anything higher than wide) get vertical orientation.
-# Syntax: default_orientation horizontal|vertical|auto
 default_orientation horizontal
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# Layout Mode for New Containers
-# This option determines in which mode new containers on workspace level will start
-# Syntax: workspace_layout default|stacking|tabbed
+# Layout Mode for New Containers ( default|stacking|tabbed )
 workspace_layout default
 
 # Toggle Tiling / Floating
@@ -83,22 +74,18 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the First Scratchpad Window
 bindsym $mod+minus scratchpad show
 
-# Sticky Floating Windows
-# Syntax: sticky enable|disable|toggle
+# Sticky Floating Windows ( enable|disable|toggle )
 bindsym $mod+Shift+plus sticky toggle
 
 # Window Colors
 # Opetion Name          	#<Border>	  <Background>		 <Text>		  <Indicator>
-client.focused           		#264A53			#404552			#fdf6e3			#268bd2	
-client.focused_inactive         #13253b			#353944			#839496			#073642
+client.focused           	#264A53			#404552			#fdf6e3			#268bd2	
+client.focused_inactive   #13253b			#353944			#839496			#073642
 client.unfocused  				#13253b			#353944			#839496			#073642
-client.urgent            		#13253b			#dc322f			#fdf6e3			#002b36
+client.urgent            	#13253b			#dc322f			#fdf6e3			#002b36
 
-# Window Container Border Settings
-# syntax: new_window normal|none|pixel
+# Window Container Border Settings ( normal|none|pixel )
 new_window none
-
-# Syntax: new_float normal|none|pixel
 new_float normal 1
 
 # For Direct Border Changing with Keyboard Shortcut
@@ -110,7 +97,7 @@ bindsym $mod+y border none
 # Open the Blank Space "i3 open" or "i3-msg open"
 bindsym $mod+o open
 
-# enable or disable focus on mouse hover (yes | no)
+# enable or disable focus on mouse hover ( yes | no )
 focus_follows_mouse no
 
 # Define Workspace
@@ -167,11 +154,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+r mode "resize"
 mode "resize" {
   # These bindings trigger as soon as you enter the resize mode
-
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
   bindsym h resize shrink width 1 px
   bindsym j resize grow height 1 px
   bindsym k resize shrink height 1 px
@@ -187,26 +169,6 @@ mode "resize" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available) #0D3642 #002b36 #268bd2 | iw #073642 #004658 | text #e4f2f2
-# --config ~/.i3/i3status.conf bg>>#17424c #859900
-#bar {
-#	position top	
-#	status_command i3status --config ~/.i3/i3status.conf
-#	separator_symbol "¦"
-#	workspace_buttons yes
-#	colors {
-#        background #383c4a
-#        statusline #28fefe
-#        separator #586e75
-#
-#        focused_workspace  #2aa198 #2aa198 #004658
-#        active_workspace   #586e75 #586e75 #004658
-#        inactive_workspace #383c4a #383c4a #28fefe
-#        urgent_workspace   #dc322f #dc322f #fdf6e3
-#    }
-#}
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+F3 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -229,18 +191,13 @@ for_window [class="Wine"] border normal 1
 for_window [class="Code"] floating enable
 
 # Autostart App
-#exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
-#exec --no-startup-id sh ~/.config/cmus/cmus.sh
+exec --no-startup-id sh ~/.config/cmus/cmus.sh
 
 # Network Manager Applet
-#exec --no-startup-id killall nm-applet ; nm-applet
-
-#exec --no-startup-id volumeicon
-#exec --no-startup-id xfce4-power-manager
+exec --no-startup-id killall nm-applet ; nm-applet
 
 # Background setting
-# exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id feh --bg-fill -Z ~/Pictures/wallpapers/vector_wall/wallhaven-179391.jpg
 
 # Pulse Audio controls
@@ -264,7 +221,7 @@ bindsym $mod+ctrl+p exec --no-startup-id deepin-picker
 bindsym $mod+ctrl+s exec --no-startup-id soundconverter
 bindsym $mod+ctrl+f exec --no-startup-id pcmanfm
 bindsym $mod+ctrl+g exec --no-startup-id galculator
-bindsym $mod+ctrl+n exec --no-startup-id "/home/farzal182/Apps/android/android-studio/bin/studio.sh"
+bindsym $mod+ctrl+n exec --no-startup-id "~/Apps/android/android-studio/bin/studio.sh"
 
 ### application setup special ###
 bindsym $mod+ctrl+8 exec bash -c 'GTK2_RC_FILES=~/.themes/Greybird-Pro/gtk-2.0/gtkrc wps'
@@ -283,15 +240,11 @@ bindsym $mod+ctrl+z exec st -e tmux
 
 ##### 
 
-# Window Title Alignment
-# This option determines the window title’s text alignment.
-# Default is left
-# Syntax: title_align left|center|right
+# Window Title Alignment ( left|center|right )
 title_align right
 
 # For adding space and [] character on window title
 for_window [class=".*"] title_format " %title% " border pixel 1
-#for_window [class=".*"] title_format " %title% "
 
 # i3-msg border none
 exec --no-startup-id i3-msg border none
@@ -301,7 +254,7 @@ exec --no-startup-id i3-msg border none
 #bindsym $mod+shift+c focus output HDMI
 
 # Start Conky
-#exec --no-startup-id killall conky ; conky -c ~/.config/conky/conkyrc
+exec --no-startup-id killall conky ; conky -c ~/.config/conky/conkyrc
 
 # Enable Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -315,9 +268,7 @@ bindsym $mod+F2 exec --no-startup-id wifi toggle
 # Screenshot
 bindsym $mod+Print exec --no-startup-id scrot 'Screenshot\ from\ %Y-%m-%d %H-%M-%S.png' -e 'mv *.png ~/Pictures/screenshot'
 
-#############################
-### settings for i3-gaps: ###
-#############################
+### settings for i3-gaps:
 gaps inner 1
 gaps outer 1
 smart_gaps on
